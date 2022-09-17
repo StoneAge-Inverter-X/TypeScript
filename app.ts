@@ -20,4 +20,4 @@ const combine2 = (
   } else return Number(inp1) + Number(inp2);
 };
 
-const results = combine2(2, 3, "number");
+const results = combine2(2, 3, "number"); //'numbers' will be error
