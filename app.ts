@@ -1,23 +1,29 @@
-//Union type
-const combine = (inp1: string | number, inp2: string | number) => {
-  if (typeof inp1 === "string" && typeof inp2 === "string") {
-    return inp1.concat(inp2);
-  } else return Number(inp1) + Number(inp2);
-};
+//function return types
+function add(n1: number, n2: number): number {
+  return n1 + n2;
+}
 
-console.log(combine(1, 2));
-console.log(combine("1", "2"));
+function printSome(n1: never) {
+  console.log(n1);
+  return;
+}
 
-//literal type
+//funciton as type
+//vanila JS
+let combineX;
+combineX = add;
+combineX(2, 3);
+//TS
+let combineY: (a: number, b: number) => number;
+combineY = add;
+//combineY = printSome //imp: erro will occur in here
 
-const combine2 = (
-  inp1: string | number,
-  inp2: string | number,
-  resultType: "number" | "text"
-) => {
-  if (typeof inp1 === "string" && typeof inp2 === "string") {
-    return inp1.concat(inp2);
-  } else return Number(inp1) + Number(inp2);
-};
+//function type and  call back
+function addAndHandle(n1: number, n2: number, cb: (n3: number) => void) {
+  const result = n1 + n2;
+  cb(result);
+}
 
-const results = combine2(2, 3, "number"); //'numbers' will be error
+addAndHandle(10, 21, (res) => {
+  console.log(res);
+});
