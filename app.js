@@ -1,10 +1,25 @@
-//Union type
-var combine = function (inp1, inp2) {
-    if (typeof inp1 === "string" && typeof inp2 === "string") {
-        return inp1.concat(inp2);
-    }
-    else
-        return Number(inp1) + Number(inp2);
-};
-console.log(combine(1, 2));
-console.log(combine("1", "2"));
+//function return types
+function add(n1, n2) {
+    return n1 + n2;
+}
+function printSome(n1) {
+    console.log(n1);
+    return;
+}
+//funciton as type
+//vanila JS
+var combineX;
+combineX = add;
+combineX(2, 3);
+//TS
+var combineY;
+combineY = add;
+//combineY = printSome //imp: erro will occur in here
+//function type and  call back
+function addAndHandle(n1, n2, cb) {
+    var result = n1 + n2;
+    cb(result);
+}
+addAndHandle(10, 21, function (res) {
+    console.log(res);
+});
